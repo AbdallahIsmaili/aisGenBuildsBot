@@ -3,21 +3,21 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
-# from discord.ext import tasks
-# from itertools import cycle
+from discord.ext import tasks
+from itertools import cycle
 
 client = commands.Bot(command_prefix="$", intents=discord.Intents.all())
 
-# bot_status = cycle(["Type in '$help' for help ", "Type in '$build' for characters builds", "Type in '$ping' for see your internet conection speed"])
+bot_status = cycle(["Type in '$help' for help ", "Type in '$build' for characters builds", "Type in '$ping' for see your internet conection speed"])
 
-# @tasks.loop(seconds=5)
-# async def change_status():
-#     await client.change_presence(activity = discord.Game(next(bot_status)))
+@tasks.loop(seconds=5)
+async def change_status():
+    await client.change_presence(activity = discord.Game(next(bot_status)))
 
 @client.event
 async def on_ready():
     print("Success: Bot is connected to Discord")
-    # change_status.start()
+    change_status.start()
 
 async def load():
     for filename in os.listdir("./cogs"):
