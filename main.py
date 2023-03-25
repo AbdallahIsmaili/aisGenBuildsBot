@@ -10,6 +10,8 @@ client = commands.Bot(command_prefix="$", intents=discord.Intents.all())
 
 bot_status = cycle(["Type in '$help' for help ", "Type in '$build' for characters builds", "Type in '$ping' for see your internet conection speed"])
 
+client.remove_command("help")
+
 @tasks.loop(seconds=5)
 async def change_status():
     await client.change_presence(activity = discord.Game(next(bot_status)))
@@ -26,9 +28,6 @@ async def ping(interaction: discord.Interaction):
     await interaction.response.send_message(f"Pong! {bot_latency} ms.")
 
 
-
-
-
 async def load():
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
@@ -37,7 +36,7 @@ async def load():
 async def main():
     async with client:
         await load()
-        await client.start("")
+        await client.start("TOKEN")
 
 
 

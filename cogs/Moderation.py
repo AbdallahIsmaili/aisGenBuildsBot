@@ -12,7 +12,7 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, count: int):
-        await ctx.channel.purge(limit=count)
+        await ctx.channel.purge(limit=count+1)
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
@@ -51,6 +51,27 @@ class Moderation(commands.Cog):
                              inline=False)
         await ctx.send(embed=conf_embed)
 
+    @clear.error
+    async def clear_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Error: Missing Require Arguments. You must to enter a number value to run the clear command.")
+
+    @kick.error
+    async def clear_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Error: Missing Require Arguments. You must past a user ID or @mention.")
+
+    @ban.error
+    async def clear_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send(
+                "Error: Missing Require Arguments. You must past a user ID or @mention.")
+
+    @unban.error
+    async def clear_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send(
+                "Error: Missing Require Arguments. You must past a user ID.")
 
 
 async def setup(client):
