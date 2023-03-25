@@ -16,8 +16,18 @@ async def change_status():
 
 @client.event
 async def on_ready():
+    await client.tree.sync()
     print("Success: Bot is connected to Discord")
     change_status.start()
+
+@client.tree.command(name="ping", description="Show the bot's latency in ms.")
+async def ping(interaction: discord.Interaction):
+    bot_latency = round(client.latency * 1000)
+    await interaction.response.send_message(f"Pong! {bot_latency} ms.")
+
+
+
+
 
 async def load():
     for filename in os.listdir("./cogs"):
@@ -27,24 +37,8 @@ async def load():
 async def main():
     async with client:
         await load()
-        await client.start("TOKEN")
+        await client.start("")
 
 
-# @client.command()
-# async def ping(ctx):
-#     bot_latency = round(client.latency * 1000)
-#     await ctx.send(f"Pong!, {bot_latency} ms.")
-
-# @client.command()
-# async def hello(ctx):
-#     await ctx.send("Hello there!")
-#
-# @client.command(aliases=["8ball", "eightball", "eight ball", "8 ball"])
-# async def magic_eightball(ctx, *, question):
-#     with open('responses.txt', 'r') as f:
-#         random_responses = f.readlines()
-#         response = random.choice(random_responses)
-#
-#     await ctx.send(response)
 
 asyncio.run(main())
