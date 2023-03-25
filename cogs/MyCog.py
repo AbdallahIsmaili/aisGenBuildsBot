@@ -29,7 +29,7 @@ class MyCog(commands.Cog):
 
         embed_message.set_thumbnail(url="https://dk2dv4ezy246u.cloudfront.net/widgets/sLrag8fYCtT_large.jpg")
 
-        embed_message.set_image(url="https://w0.peakpx.com/wallpaper/893/65/HD-wallpaper-video-game-genshin-impact-xingqiu-genshin-impact.jpg")
+        embed_message.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2023/02/10/135704791/cb7c75c9b96fed2bf966d68d09d209fa_4584696412287163334.jpg?x-oss-process=image%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
 
         embed_message.add_field(name="Primordial Jade Cutter",
         value=" \n حتوي على نسبة Crit RATE عالية \n هذا السلاح هو أفضل خيار هجومي لـ C6 Xingqiu \n طالما أن متطلبات ER متوفرة وغير موصى بها لغير C6 Xingqiu",
@@ -82,7 +82,7 @@ class MyCog(commands.Cog):
         embed_message.set_thumbnail(url="https://static.wikia.nocookie.net/gensin-impact/images/b/be/Icon_Emoji_Paimon%27s_Paintings_Kamisato_Ayaka_8.png/revision/latest/scale-to-width-down/250?cb=20220422085921")
 
         embed_message.set_image(
-            url="https://www.siliconera.com/wp-content/uploads/2021/07/kamisatoayaka.jpg?fit=765%2C432")
+            url="https://upload-os-bbs.hoyolab.com/upload/2023/03/21/135704791/5b7242b777698a65a17f5377e89716ed_7279453830196285054.jpg?x-oss-process=image%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
 
         embed_message.add_field(name="Primordial Jade Cutter",
                                 value="يحتوي على نسبة Crit RATE عالية \n هذا السلاح هو أفضل خيار هجومي لـ Ayaka \n طالما أن متطلبات ER متوفرة.",
@@ -130,7 +130,7 @@ class MyCog(commands.Cog):
             url="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/97e2e37c-5240-4a8c-9104-8adc507b5971/dekqnix-16b0f536-b305-4e6b-9376-5ff6530194b8.png/v1/fill/w_500,h_500,q_80,strp/icon_commission__hu_tao_by_melodreamm_dekqnix-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTAwIiwicGF0aCI6IlwvZlwvOTdlMmUzN2MtNTI0MC00YThjLTkxMDQtOGFkYzUwN2I1OTcxXC9kZWtxbml4LTE2YjBmNTM2LWIzMDUtNGU2Yi05Mzc2LTVmZjY1MzAxOTRiOC5wbmciLCJ3aWR0aCI6Ijw9NTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.SjY_eI35y2QKLSvxVmnw-Tr5QsNBI52r7dWFzG0mM3M")
 
         embed_message.set_image(
-            url="https://w0.peakpx.com/wallpaper/204/749/HD-wallpaper-hu-tao-new-art-genshin-impact.jpg")
+            url="https://upload-os-bbs.hoyolab.com/upload/2023/02/07/135704791/3531f00435ec8f8d95d04376cf05de6d_7352601156437108807.jpg?x-oss-process=image%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
 
         embed_message.add_field(name="Staff of Homa",
                                 value="أفضل سلاح لـ Hu Tao لأنه يحتوي على نسبة Crit DMG عالية جدًا \n يعطيها نسبة إضافية من الـ Max HP",
