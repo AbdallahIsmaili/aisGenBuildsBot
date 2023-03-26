@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 
 class MyWeapons(commands.Cog):
@@ -7,13 +8,20 @@ class MyWeapons(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        await self.client.tree.sync()
         print('MyWeapons.py is ready!')
 
-    @commands.command()
-    async def staff_of_homa(self, ctx):
+    @app_commands.command(name="staff_of_homa", description="سلاح staff of homa.")
+    async def staff_of_homa(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         embed_message = discord.Embed(title="__Staff Of Homa | سلاح__", color=discord.Color.dark_red())
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
         embed_message.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2021/11/07/167269489/57ff19f6ced179e27ecac72d225412f9_8108049312602663019.jpg?x-oss-process=image%2Fresize%2Cs_1000%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
 
@@ -31,15 +39,21 @@ class MyWeapons(commands.Cog):
                                 value="> Hu Tao \n > Xiao \n > Zhongli \n > Xiangling \n > Raiden shogun \n > Candace ",
                                 inline=False)
 
-        embed_message.set_footer(text="الماتيريال الازم توفرها", icon_url=ctx.author.avatar)
+        embed_message.set_footer(text="الماتيريال الازم توفرها", icon_url=member.avatar)
 
-        await ctx.send(embed=embed_message)
+        await interactions.response.send_message(embed=embed_message)
 
-    @commands.command()
-    async def engulfing_lightning(self, ctx):
+    @app_commands.command(name="engulfing_lightning", description="سلاح engulfing lightning.")
+    async def engulfing_lightning(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         embed_message = discord.Embed(title="__Engulfing Lightning | سلاح__", color=discord.Color.dark_purple())
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
         embed_message.set_image(
             url="https://upload-os-bbs.hoyolab.com/upload/2022/03/07/8009863/1093078a80ea9fd2424cddc7689af3d1_7949519603753924734.jpg?x-oss-process=image/resize,s_1000/quality,q_80/auto-orient,0/interlace,1/format,jpg")
@@ -60,9 +74,9 @@ class MyWeapons(commands.Cog):
                                 value="> Raiden Shogun \n > Yun jin \n > Zhongli \n > Xiangling \n > Rosaria \n > Mika ",
                                 inline=False)
 
-        embed_message.set_footer(text="الماتيريال الازم توفرها", icon_url=ctx.author.avatar)
+        embed_message.set_footer(text="الماتيريال الازم توفرها", icon_url=member.avatar)
 
-        await ctx.send(embed=embed_message)
+        await interactions.response.send_message(embed=embed_message)
 
 
 async def setup(client):

@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 
 class HelpCommand(commands.Cog):
@@ -7,13 +8,20 @@ class HelpCommand(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        await self.client.tree.sync()
         print('HelpCommand.py is ready!')
 
-    @commands.command()
-    async def help(self, ctx):
+    @app_commands.command(name="help", description="قائمة المساعدة.")
+    async def help(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         help_embed = discord.Embed(title="__aiGenshin Builds | Help Directory__", description="Select a category from the dropdown to view commands specific to that category.", color=discord.Color.gold())
 
-        help_embed.set_author(name="aiGenshin_Builds", icon_url=ctx.author.avatar)
+        help_embed.set_author(name="aiGenshin_Builds", icon_url=member.avatar)
 
         help_embed.set_thumbnail(
             url="https://yoolk.ninja/wp-content/uploads/2021/08/Games-GenshinImpact-1024x1024.png")
@@ -25,7 +33,7 @@ class HelpCommand(commands.Cog):
                                 inline=False)
 
 
-        await ctx.send(embed=help_embed)
+        await interactions.response.send_message(embed=help_embed)
 
 async def setup(client):
     await client.add_cog(HelpCommand(client))

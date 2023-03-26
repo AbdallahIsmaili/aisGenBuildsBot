@@ -36,7 +36,7 @@ async def load():
 async def main():
     async with client:
         await load()
-        await client.start("TOKEN")
+        await client.start("MTA3Njk5Mjk5NDc2MDIxMjQ5MQ.Gh1-IV.DuFBlqv6enwVLj4u7EA26FQbNawadmJPJDU4R0")
 
 
 

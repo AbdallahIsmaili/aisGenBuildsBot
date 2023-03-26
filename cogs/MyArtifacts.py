@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 
 class MyArtifacts(commands.Cog):
@@ -7,13 +8,20 @@ class MyArtifacts(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        await self.client.tree.sync()
         print('MyArtifacts.py is ready!')
 
-    @commands.command()
-    async def crimson(self, ctx):
+    @app_commands.command(name="crimson", description="ارتيفاكت الكريمزون.")
+    async def crimson(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         embed_message = discord.Embed(title="__Crimson witch of flames | ارتيفاكت__", color=discord.Color.dark_red())
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
         embed_message.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2022/07/22/69529472/84149b7329c829cf5f7fb1c0123aa3bd_7222137357418033695.PNG?x-oss-process=image%2Fresize%2Cs_1000%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
 
@@ -27,7 +35,7 @@ class MyArtifacts(commands.Cog):
                                 value="> Hu Tao \n > Diluc \n > Klee \n > Yanfie \n > Yoe mia \n > Dehya ",
                                 inline=False)
 
-        await ctx.send(embed=embed_message)
+        await interactions.response.send_message(embed=embed_message)
 
 
 async def setup(client):

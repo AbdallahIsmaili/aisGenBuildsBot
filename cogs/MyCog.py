@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 
 class MyCog(commands.Cog):
@@ -7,25 +8,53 @@ class MyCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        await self.client.tree.sync()
         print('MyCog.py is ready!')
 
-    @commands.command()
-    async def embed(self, ctx):
-        embed_message = discord.Embed(title="Title of embed", description="Description of embed", color=discord.Color.red())
+    @app_commands.command(name="avatar", description="View my discord avatar.")
+    async def avatar(self, interactions: discord.Interaction, member: discord.Member=None):
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
-        embed_message.set_thumbnail(url=ctx.guild.icon)
-        embed_message.set_image(url=ctx.guild.icon)
-        embed_message.add_field(name="Field name", value="Field value", inline=False)
-        embed_message.set_footer(text="This is the footer", icon_url=ctx.author.avatar)
+        avatar_embed = discord.Embed(title=f"{member.name}'s Avatar", color=discord.Color.random())
+        avatar_embed.set_image(url=member.avatar)
+        avatar_embed.set_footer(text=f"Requested by {interactions.user.name}", icon_url=interactions.user.avatar)
 
-        await ctx.send(embed = embed_message)
+        await interactions.response.send_message(embed=avatar_embed)
 
-    @commands.command()
-    async def xingqui(self, ctx):
+    # @app_commands.command(name="embed", description="simple embed.")
+    # async def embed(self, interactions: discord.Interaction, member: discord.Member=None):
+    #
+    #     if member is None:
+    #         member = interactions.user
+    #     elif member is not None:
+    #         member = member
+    #
+    #
+    #     embed_message = discord.Embed(title="Title of embed", description="Description of embed", color=discord.Color.red())
+    #
+    #     embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
+    #     embed_message.set_thumbnail(url=member.guild.icon)
+    #     embed_message.set_image(url=member.guild.icon)
+    #     embed_message.add_field(name="Field name", value="Field value", inline=False)
+    #     embed_message.set_footer(text="This is the footer", icon_url=member.avatar)
+    #
+    #     await interactions.response.send_message(embed=embed_message)
+
+
+    @app_commands.command(name="xingqui", description="عرض معلومات بناء شخصية شينغشو.")
+    async def xingqui(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         embed_message = discord.Embed(title="__Xingqiu (Off-Field DPS) | بناء__", color=discord.Color.blue())
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
         embed_message.set_thumbnail(url="https://dk2dv4ezy246u.cloudfront.net/widgets/sLrag8fYCtT_large.jpg")
 
@@ -69,15 +98,21 @@ class MyCog(commands.Cog):
                                 value="> الالتيميت \n > المهارة الأساسية \n > الهجوم العادي",
                                 inline=False)
 
-        embed_message.set_footer(text="This is the footer", icon_url=ctx.author.avatar)
+        embed_message.set_footer(text="This is the footer", icon_url=member.avatar)
 
-        await ctx.send(embed=embed_message)
+        await interactions.response.send_message(embed=embed_message)
 
-    @commands.command()
-    async def ayaka(self, ctx):
+    @app_commands.command(name="ayaka", description="عرض معلومات بناء شخصية اياكا.")
+    async def ayaka(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         embed_message = discord.Embed(title="__Ayaka (Main DPS) | بناء__", color=discord.Color.lighter_grey())
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
         embed_message.set_thumbnail(url="https://static.wikia.nocookie.net/gensin-impact/images/b/be/Icon_Emoji_Paimon%27s_Paintings_Kamisato_Ayaka_8.png/revision/latest/scale-to-width-down/250?cb=20220422085921")
 
@@ -118,13 +153,19 @@ class MyCog(commands.Cog):
 
         embed_message.set_footer(text="يمكن تغيير البناء وفقًا للتفضيلات الشخصية للمستخدم")
 
-        await ctx.send(embed=embed_message)
+        await interactions.response.send_message(embed=embed_message)
 
-    @commands.command()
-    async def hutao(self, ctx):
+    @app_commands.command(name="hutao", description="عرض معلومات بناء شخصية هوتاو.")
+    async def hutao(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
         embed_message = discord.Embed(title="__Hu Tao (Main DPS) | بناء__", color=discord.Color.red())
 
-        embed_message.set_author(name=f"Requested by {ctx.author}", icon_url=ctx.author.avatar)
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
         embed_message.set_thumbnail(
             url="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/97e2e37c-5240-4a8c-9104-8adc507b5971/dekqnix-16b0f536-b305-4e6b-9376-5ff6530194b8.png/v1/fill/w_500,h_500,q_80,strp/icon_commission__hu_tao_by_melodreamm_dekqnix-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTAwIiwicGF0aCI6IlwvZlwvOTdlMmUzN2MtNTI0MC00YThjLTkxMDQtOGFkYzUwN2I1OTcxXC9kZWtxbml4LTE2YjBmNTM2LWIzMDUtNGU2Yi05Mzc2LTVmZjY1MzAxOTRiOC5wbmciLCJ3aWR0aCI6Ijw9NTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.SjY_eI35y2QKLSvxVmnw-Tr5QsNBI52r7dWFzG0mM3M")
@@ -178,7 +219,7 @@ class MyCog(commands.Cog):
 
         embed_message.set_footer(text="يمكن تغيير البناء وفقًا للتفضيلات الشخصية للمستخدم")
 
-        await ctx.send(embed=embed_message)
+        await interactions.response.send_message(embed=embed_message)
 
 async def setup(client):
     await client.add_cog(MyCog(client))
