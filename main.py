@@ -111,7 +111,7 @@ async def load():
 async def main():
     async with client:
         await load()
-        await client.start("MTA3Njk5Mjk5NDc2MDIxMjQ5MQ.GAMNjG.vbjOx3RJ2zVpDHBcgRZLZK3uNTJIbyJtDNgsdQ")
+        await client.start("TOKEN")
 
 
 
