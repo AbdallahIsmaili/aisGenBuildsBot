@@ -221,5 +221,70 @@ class MyCog(commands.Cog):
 
         await interactions.response.send_message(embed=embed_message)
 
+    @app_commands.command(name="cyno", description="عرض معلومات بناء شخصية سينو.")
+    async def cyno(self, interactions: discord.Interaction, member: discord.Member = None):
+
+        if member is None:
+            member = interactions.user
+        elif member is not None:
+            member = member
+
+        embed_message = discord.Embed(title="__Cyno (DPS) | بناء__", color=discord.Color.red())
+
+        embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
+
+        embed_message.set_thumbnail(
+            url="https://static.wikia.nocookie.net/gensin-impact/images/0/05/Icon_Emoji_Paimon%27s_Paintings_18_Cyno_3.png/revision/latest/scale-to-width-down/250?cb=20221020052700")
+
+        embed_message.set_image(
+            url="https://upload-os-bbs.hoyolab.com/upload/2023/03/01/135704791/f10adf6b84c3ffc5a24d37882e54539e_4572522418184772856.jpg?x-oss-process=image%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
+
+        embed_message.add_field(name="Staff of the Scarlet Sands",
+                                value="الشخصية المجهزة تحصل على 52% من EM الخاص بها كهجوم إضافي. عندما يصيب مهارة السكل الخصم، سيتم الحصول على تأثير لمدة 10 ثوانٍ: سيحصل الشخصية المجهزة على 28% من EM الخاص بها كهجوم إضافي. يصل إلى حد أقصى 3 مرات.",
+                                inline=False)
+
+        embed_message.add_field(name="Staff of Homa",
+                                value="أفضل سلاح لـ Hu Tao لأنه يحتوي على نسبة Crit DMG عالية جدًا \n يعطيها نسبة إضافية من الـ Max HP",
+                                inline=False)
+
+        embed_message.add_field(name="Dragon's Bane",
+                                value="يعد سلاح Dragon's Bane مناسبًا لشخصيات الأنوم الذين يعتمدون على هجمات القوى الإلهية، حيث يحصلون على زيادة في الهجمات ضد الوحوش الأنوم بنسبة 20%، كما يحتوي السلاح على قوة القوى الإلهية المطورة والتي تزيد من قوة الهجمات النارية بنسبة 20%.",
+                                inline=False)
+
+        embed_message.add_field(name="Primordial Jade Winged-Spear",
+                                value="سلاح جيد آخر بسبب النسبة العالية من الـ Crit Rate \n مفيد إذا لم يكن لديك سلاح Staff of Homa",
+                                inline=False)
+
+        embed_message.add_field(name="Deathmatch",
+                                value="سلاح آخر مفيد لـ Hu Tao \n يحتوي على نسبة عالية من الـ Crit Rate و ATK \n ويعطي مكافأة إضافية للـ Elemental Mastery في معركة 1v1",
+                                inline=False)
+
+        embed_message.add_field(name="أسلحة بديلة:",
+                                value="Blackcliff Pole, White Tassel",
+                                inline=False)
+
+        embed_message.add_field(name="أفضل الارتيفاكت / Gilded Dreams:",
+                                value="> تأثير من قطعتين: يزيد الهجوم بنسبة 18 بالمائة. \n > تأثير من أربع قطع: عند إلقاء مهارة عنصرية ، إذا كان لدى الشخصية 15 طاقة أو أكثر ، فإنها تفقد 15 طاقة ويزداد ضرر الهجوم العادي / المشحون / الغاطس بنسبة 50 بالمائة لمدة 10 ثوانٍ.",
+                                inline=False)
+
+        embed_message.add_field(name="ثاني أفضل الارتيفاكت / thundering fury:",
+                                value="> تأثير من قطعتين: Electro DMG Bonus +15%. \n > تأثير من أربع قطع: يزيد الضرر الناتج عن Overloaded ، Electro-Charged ،  Superconduct ، وHyperbloom بنسبة 40٪ ، ومكافأة الضرر الناتج عن Aggravate تزداد بنسبة 20٪. عندما يتم تشغيل Quicken أو التفاعلات الأولية المذكورة أعلاه ، يتم تقليل تقليل مهارة العناصر بمقدار 1 ثانية. يمكن أن يحدث مرة واحدة فقط كل 0.8 ثانية..",
+                                inline=False)
+
+        embed_message.add_field(name="أولوية الإحصائيات الرئيسية:",
+                                value="الساعة: ATK/EM \n الكأس: Electro DMG \n التاج: Crit DMG/ Rate",
+                                inline=False)
+
+        embed_message.add_field(name="أولوية الإحصائيات الثانوية:",
+                                value="Crit Rate/DMG > ATK/EM > ER",
+                                inline=False)
+
+        embed_message.add_field(name="مواهب:",
+                                value="Elemental Burst Q > Elemental Skil E > Normal Attack",
+                                inline=False)
+
+        await interactions.response.send_message(embed=embed_message, ephemeral=True)
+
+
 async def setup(client):
     await client.add_cog(MyCog(client))
