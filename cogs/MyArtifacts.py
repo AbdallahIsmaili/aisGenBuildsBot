@@ -23,13 +23,7 @@ class MyArtifacts(commands.Cog):
 
         embed_message.set_author(name=f"Requested by {member.name}", icon_url=member.avatar)
 
-        embed_message.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2022/07/22/69529472/84149b7329c829cf5f7fb1c0123aa3bd_7222137357418033695.PNG?x-oss-process=image%2Fresize%2Cs_1000%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
-
-        embed_message.add_field(name="قطعتان :",
-                                value="رفع ضرر عنصر البايرو بنسبة 15%",
-                                inline=False)
-
-        embed_message.add_field(name="اربع قطع", value="زيادة ضرر تفاعل الانفجار او الاحتراق بنسبة 40% و تفاعل التبخر و الانصهار بنسبة 15%, عند استخدام قدرة السكل, ستزداد نسبة ضرر عنصر البايرو 50% اضافة ل15% السابقة لمدة 10 ثواني, ثلاث ستاكات كحد اقصى.", inline=False)
+        embed_message.set_image(url="https://upload-os-bbs.hoyolab.com/upload/2023/04/01/229749002/71adfe450e57328660b6a2dee07a2433_6931520162347674420.jpg?x-oss-process=image%2Fquality%2Cq_80%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp")
 
         embed_message.add_field(name="الشخصيات المناسبة :",
                                 value="> Hu Tao \n > Diluc \n > Klee \n > Yanfie \n > Yoe mia \n > Dehya ",
